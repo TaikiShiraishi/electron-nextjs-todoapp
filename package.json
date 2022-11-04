@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "main": "main/index.js",
+  "productName": "ElectronTypescriptNext",
+  "scripts": {
+    "clean": "rimraf dist main renderer/out renderer/.next",
+    "dev": "npm run build-electron && electron .",
+    "build-renderer": "next build renderer && next export renderer",
+    "build-electron": "tsc -p electron-src",
+    "build": "npm run build-renderer && npm run build-electron",
+    "pack-app": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "type-check": "tsc -p ./renderer/tsconfig.json && tsc -p ./electron-src/tsconfig.json",
+    "lint": "next lint --dir src",
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix"
+  },
+  "dependencies": {
+    "autoprefixer": "10.4.13",
+    "electron-is-dev": "1.1.0",
+    "electron-next": "3.1.5",
+    "postcss": "8.4.18",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "14.14.6",
+    "@types/react": "16.9.9",
+    "@types/react-dom": "16.9.9",
+    "electron": "13",
+    "electron-builder": "23.0.3",
+    "eslint-config-prettier": "8.5.0",
+    "next": "13.0.2",
+    "rimraf": "3.0.0",
+    "typescript": "4.0.5"
+  },
+  "build": {
+    "asar": true,
+    "files": [
+      "main",
+      "renderer/out"
+    ]
+  }
+}
+
