@@ -1,20 +1,20 @@
-import React from 'react'
-import ListItem from './ListItem'
-import { User } from '../interfaces'
+import {ToDoList} from "../interfaces";
 
-type Props = {
-  items: User[]
+const List = ({toDoList}: { toDoList: ToDoList }): JSX.Element => {
+  if (toDoList.length === 0) {
+    return (
+      <div>
+        <p>Empty ToDo</p>
+      </div>
+    )
+  }
+  return (
+    <ul>
+      {toDoList.map((toDoItem) => (
+        <li key={toDoItem.id}>{toDoItem.todo}</li>
+      ))}
+    </ul>
+  )
 }
 
-const List = ({ items }: Props) => (
-  <ul>
-    {items.map((item) => (
-      <li key={item.id}>
-        <ListItem data={item} />
-      </li>
-    ))}
-  </ul>
-)
-
-export default List
-
+export default List;
