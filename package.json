@@ -6,7 +6,7 @@
     "clean": "rimraf dist main renderer/out renderer/.next",
     "dev": "npm run build-electron && electron .",
     "build-renderer": "next build renderer && next export renderer",
-    "build-electron": "tsc -p electron-src",
+    "build-electron": "tsc --project ./electron-src/tsconfig.json",
     "build": "npm run build-renderer && npm run build-electron",
     "pack-app": "npm run build && electron-builder --dir",
     "dist": "npm run build && electron-builder",
@@ -16,23 +16,26 @@
   },
   "dependencies": {
     "autoprefixer": "10.4.13",
-    "electron-is-dev": "1.1.0",
+    "electron-is-dev": "2.0.0",
     "electron-next": "3.1.5",
+    "electron-store": "8.1.0",
     "postcss": "8.4.18",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwindcss": "3.2.1"
+    "tailwindcss": "3.2.2",
+    "uuid": "9.0.0"
   },
   "devDependencies": {
-    "@types/node": "14.14.6",
-    "@types/react": "16.9.9",
-    "@types/react-dom": "16.9.9",
-    "electron": "13",
-    "electron-builder": "23.0.3",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.8",
+    "@types/uuid": "8.3.4",
+    "electron": "21.2.2",
+    "electron-builder": "23.6.0",
     "eslint-config-prettier": "8.5.0",
     "next": "13.0.2",
-    "rimraf": "3.0.0",
-    "typescript": "4.0.5"
+    "rimraf": "3.0.2",
+    "typescript": "4.8.4"
   },
   "build": {
     "asar": true,
@@ -42,4 +45,3 @@
     ]
   }
 }
-
